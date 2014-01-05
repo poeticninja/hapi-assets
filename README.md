@@ -1,4 +1,45 @@
-hapi-assets
-===========
+Hapi Assets
+=================
 
-Load assets in views based on node environment.
+A Hapi plugin to load assets in your views based on the node environment.
+
+## Goal:
+Have access to the proper assets based on the node environment being run.
+
+## How it works:
+You pass into the plugin options an object with the assets you are wanting to be used, and those assets have to be attached to an environment name space. It uses the `process.env.NODE_ENV` to choose which assets you have access to in the view layer. The default is 'development'.
+
+
+Example:
+```
+var assetOptions = {
+    development: {
+        js: ['js/one.js', 'js/two.js'],
+        css: ['css/one.css', 'css/two.css']
+    },
+    production: {
+        js: ['js/scripts.js'],
+        css: ['css/styles.css']
+    }
+}
+
+server.pack.require('hapi-assets', assetOptions, function(err){
+    if(err){
+        console.log('Failed loading plugin cache-buster');
+    }
+});
+```
+
+Handlebars:
+```
+{{#each assets.js}}
+    <script src="{{this}}"></script>
+{{/each}}
+```
+
+Jade:
+```
+each item in assets.js
+    script(src='#{item}')
+
+```
