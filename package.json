@@ -1,6 +1,6 @@
 {
   "name": "hapi-assets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Hapi plugin to provide assets to your views based on the node environment",
   "main": "index.js",
   "repository": {

@@ -43,3 +43,6 @@ each item in assets.js
     script(src='#{item}')
 
 ```
+
+### Other
+You can see this being used in the Hapi Ninja boilerplate example. [https://github.com/poeticninja/hapi-ninja](https://github.com/poeticninja/hapi-ninja)
