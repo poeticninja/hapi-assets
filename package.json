@@ -1,6 +1,6 @@
 {
   "name": "hapi-assets",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Hapi plugin to provide assets to your views based on the node environment",
   "main": "index.js",
   "repository": {
@@ -22,6 +22,6 @@
     "url": "https://github.com/poeticninja/hapi-assets/issues"
   },
   "dependencies": {
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.x"
   }
 }

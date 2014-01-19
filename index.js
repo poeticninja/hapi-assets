@@ -7,14 +7,14 @@ exports.register = function (plugin, options, callback) {
     // Hook onto the 'onPostHandler'
     plugin.ext('onPostHandler', function (request, next) {
         // Get the response object
-        var response = request.response();
+        var response = request.response;
 
         // Check to see if the response is a view
         if (response.variety === 'view') {
-                if(_.isEmpty(response.view.context.assets)){
-                    response.view.context.assets = {};
+                if(_.isEmpty(response.source.context.assets)){
+                    response.source.context.assets = {};
                 }
-                response.view.context.assets = options[environment];
+                response.source.context.assets = options[environment];
         }
         next();
     });
