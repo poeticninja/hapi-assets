@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-exports.register = function (plugin, options, callback) {
+exports.register = function (plugin, options, next) {
 
     var environment = process.env.NODE_ENV || 'development';
 
@@ -16,6 +16,11 @@ exports.register = function (plugin, options, callback) {
                 }
                 response.source.context.assets = options[environment];
         }
-        next();
+        return next();
     });
+    return next();
+};
+
+exports.register.attributes = {
+    pkg: require("./package.json")
 };
