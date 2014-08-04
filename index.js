@@ -11,10 +11,15 @@ exports.register = function (plugin, options, next) {
 
         // Check to see if the response is a view
         if (response.variety === 'view') {
-                if(_.isEmpty(response.source.context.assets)){
-                    response.source.context.assets = {};
-                }
-                response.source.context.assets = options[environment];
+
+            if(_.isEmpty(response.source.context)){
+                response.source.context = {};
+            }
+
+            if(_.isEmpty(response.source.context.assets)){
+                response.source.context.assets = {};
+            }
+            response.source.context.assets = options[environment];
         }
         return next();
     });
