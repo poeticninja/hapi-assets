@@ -21,7 +21,7 @@ exports.register = function (plugin, options, next) {
             }
             response.source.context.assets = options[environment];
         }
-        return next();
+        return next.continue();
     });
     return next();
 };
