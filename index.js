@@ -1,11 +1,11 @@
 var _ = require('lodash');
 
-exports.register = function (plugin, options, next) {
+exports.register = function (server, options, next) {
 
     var environment = process.env.NODE_ENV || 'development';
 
     // Hook onto the 'onPostHandler'
-    plugin.ext('onPostHandler', function (request, next) {
+    server.ext('onPostHandler', function (request, reply) {
         // Get the response object
         var response = request.response;
 
@@ -21,7 +21,7 @@ exports.register = function (plugin, options, next) {
             }
             response.source.context.assets = options[environment];
         }
-        return next.continue();
+        return reply.continue();
     });
     return next();
 };

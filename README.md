@@ -12,22 +12,26 @@ You pass into the plugin options an object with the assets you are wanting to be
 
 Example:
 ```
-var assetOptions = {
-    development: {
-        js: ['js/one.js', 'js/two.js'],
-        css: ['css/one.css', 'css/two.css']
-    },
-    production: {
-        js: ['js/scripts.js'],
-        css: ['css/styles.css']
-    }
-}
 
-server.pack.require('hapi-assets', assetOptions, function(err){
+server.register({
+    register: require('hapi-assets'),
+    options: {
+        development: {
+            js: ['js/one.js', 'js/two.js'],
+            css: ['css/one.css', 'css/two.css']
+        },
+        production: {
+            js: ['js/scripts.js'],
+            css: ['css/styles.css']
+        }
+    }
+}, function (err) {
     if(err){
-        console.log('Failed loading plugin cache-buster');
+        console.log('Failed loading plugin hapi-assets');
     }
 });
+
+
 ```
 
 Handlebars:
